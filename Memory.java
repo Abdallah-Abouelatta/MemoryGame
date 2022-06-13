@@ -1,5 +1,4 @@
 
-
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
@@ -11,6 +10,7 @@ import German.Memory;
  *
  * @author Abdallah Abouelatta
  */
+
 public class Memory extends JFrame implements ActionListener, MouseListener {
 	private Player player1, player2;
 	private ArrayList<Card> cardsList = new ArrayList<Card>(); // arrayList of the all cards's objects
@@ -33,7 +33,6 @@ public class Memory extends JFrame implements ActionListener, MouseListener {
 		frame.setSize(700, 750);
 //		frame.setLocationRelativeTo(null); // to set JFrame to appear centered
 		frame.setResizable(false);
-
 //        to create menu in the main fram 
 		JMenuBar menu = new JMenuBar();
 		frame.setJMenuBar(menu);
@@ -65,6 +64,7 @@ public class Memory extends JFrame implements ActionListener, MouseListener {
 				Image imagemoddifeid = cardObject.image.getImage();
 				Image scalable = imagemoddifeid.getScaledInstance(175, 187, Image.SCALE_SMOOTH);
 				cardObject.image = new ImageIcon(scalable);
+
 //        	    to add the cards to the array list
 				cardsList.add(cardObject);
 
@@ -165,11 +165,11 @@ public class Memory extends JFrame implements ActionListener, MouseListener {
 			Card.oppenedCards.clear();
 
 //			to add the point for the player
-			if (!player1.hasTurn()) {
+			if (!player1.hasTurn())
 				player1.increasePoints();
-			} else if (!player2.hasTurn()) {
+			else
 				player2.increasePoints();
-			}
+
 //			to call the function to split a message for the user
 			gameStatus(":) | Pair found!");
 
@@ -197,7 +197,7 @@ public class Memory extends JFrame implements ActionListener, MouseListener {
 			this.player2.setHisTurn(true);
 			this.player1.setHisTurn(false);
 
-		} else if (this.player2.hasTurn()) {
+		} else {
 			this.player1.setHisTurn(true);
 			this.player2.setHisTurn(false);
 		}
@@ -266,10 +266,8 @@ public class Memory extends JFrame implements ActionListener, MouseListener {
 			if (e.getSource() == this.cardsList.get(i).imageFrame) {
 				cardsList.get(i).openCard();
 
-				if (Card.sumOpened % 2 == 0) {
+				if (Card.sumOpened % 2 == 0 || (Card.oppenedCards.size() % 2 == 0)) {
 					this.changePlayer();
-				}
-				if (Card.oppenedCards.size() % 2 == 0) {
 					this.checkPairsSimilar();
 				}
 			}

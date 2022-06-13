@@ -1,5 +1,4 @@
 
-
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
@@ -26,14 +25,13 @@ public class Card extends JPanel {
 
 	public void openCard() {
 		sumOpened++;
+//test
 		System.out.println("sum offen:" + sumOpened);
 		if (this.opened == false) {
 			this.imageFrame.setIcon(image);
 			this.opened = true;
 			this.oppenedCards.add(this);
 			System.out.println("size is" + oppenedCards.size());
-		} else if (this.opened == false) {
-			return;
 		}
 	}
 
